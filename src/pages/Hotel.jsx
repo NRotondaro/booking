@@ -1,6 +1,4 @@
-import React from 'react'
-
-function Hotel() {
+const Hotel = () => {
   return (
     <div>Hotel</div>
   )

@@ -1,7 +1,8 @@
+import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import List from './pages/List/List';
-import Hotel from './pages/Hotel/Hotel';
+import Home from './pages/Home';
+import List from './components/List';
+import Hotel from './pages/Hotel';
 
 function App() {
   return (
