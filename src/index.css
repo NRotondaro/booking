@@ -7,6 +7,14 @@
     @apply bg-white ml-3 border-none py-2 px-4 cursor-pointer text-activeBlue font-semibold text-sm;
   }
 
+  .btn-secondary {
+    @apply bg-activeBlue text-white text-lg border-none font-semibold py-2 px-6 cursor-pointer rounded-sm hover:bg-secondary;
+  }
+
+  .btn-operator {
+    @apply w-7 h-7 border-[1px] border-activeBlue text-activeBlue cursor-pointer bg-white disabled:border-gray-400 disabled:text-gray-400 disabled:cursor-not-allowed active:border-2;
+  }
+
   .li-primary {
     @apply py-2.5 px-3 flex items-center gap-2.5 border-[1px] border-transparent rounded-3xl active:border-white hover:bg-secondary hover:cursor-pointer;
   }

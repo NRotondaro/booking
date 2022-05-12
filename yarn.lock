@@ -8381,6 +8381,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+use-click-away@^12.0.1:
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/use-click-away/-/use-click-away-12.0.1.tgz#61586f1540704cf4d6661e981021356eba107092"
+  integrity sha512-eAFl3vZd5EiAR51Mr0ZcB7cv5hiTd09av29hSf0ykQHetLBeWKQIQHfSzSEfs7bqtXl7seiQNkMa3aApiS2Uaw==
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
