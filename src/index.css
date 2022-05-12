@@ -12,7 +12,7 @@
   }
 
   .btn-operator {
-    @apply w-7 h-7 border-[1px] border-activeBlue text-activeBlue cursor-pointer bg-white disabled:border-gray-400 disabled:text-gray-400 disabled:cursor-not-allowed active:border-2;
+    @apply w-8 h-8 border-[1px] border-activeBlue text-activeBlue cursor-pointer bg-white disabled:border-gray-400 disabled:text-gray-400 disabled:cursor-not-allowed active:border-2;
   }
 
   .li-primary {
