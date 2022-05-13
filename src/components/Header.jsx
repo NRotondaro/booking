@@ -95,14 +95,13 @@ const Header = ({ type }) => {
                   className='outline-none placeholder:text-black flex-1 h-full'
                 />
               </div>
-              <div className='flex relative items-center gap-2.5 cursor-pointer border-x-4 border-yellow px-6'>
+              <div className='flex relative items-center gap-2.5 cursor-pointer border-x-4 border-yellow px-6 z-30'>
                 <FontAwesomeIcon
                   icon={faCalendarDays}
                   className='text-gray-400'
                 />
                 <span
                   onClick={toggleCalendar}
-                  className='headerserachtext'
                 >{`${format(date[0].startDate, 'E, MMM d')} - ${format(
                   date[0].endDate,
                   'E, MMM d'
@@ -110,7 +109,7 @@ const Header = ({ type }) => {
                 {openDate && (
                   <span>
                     <DateRange
-                      className='absolute top-16 left-4 shadow-md'
+                      className='absolute top-16 left-0 shadow-md'
                       editableDateInputs={true}
                       onChange={(item) => setDate([item.selection])}
                       moveRangeOnFirstSelection={false}
@@ -126,7 +125,7 @@ const Header = ({ type }) => {
                   onClick={toggleOptions}
                 >{`${options.adult} adults · ${options.children} children · ${options.room} room`}</span>
                 {openOptions && (
-                  <div className='absolute top-16 right-0 px-2 py-4 bg-white rounded-md shadow-md'>
+                  <div className='absolute top-16 right-0 px-2 py-4 bg-white rounded-md shadow-md z-30'>
                     <div className='w-48 flex items-center justify-between m-2.5'>
                       <span className='option text'>Adults</span>
                       <div className='flex items-center gap-2.5 text-sm'>

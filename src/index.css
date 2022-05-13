@@ -18,4 +18,8 @@
   .li-primary {
     @apply py-2.5 px-3 flex items-center gap-2.5 border-[1px] border-transparent rounded-3xl active:border-white hover:bg-secondary hover:cursor-pointer;
   }
+
+  .li-featured {
+    @apply relative text-white rounded-md overflow-hidden h-64;
+  }
 }
