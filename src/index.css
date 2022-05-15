@@ -22,4 +22,8 @@
   .li-featured {
     @apply relative text-white rounded-md overflow-hidden h-64;
   }
+
+  .li-footer {
+    @apply mb-2.5 text-primary cursor-pointer
+  }
 }

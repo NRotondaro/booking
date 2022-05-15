@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar';
 import Featured from '../components/Featured';
 import PropertyList from '../components/PropertyList';
 import FeaturedProperties from '../components/FeaturedProperties';
+import Mail from '../components/Mail';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
         <PropertyList />
         <h1 className='text-xl font-bold'>Homes guests love</h1>
         <FeaturedProperties />
+        <Mail />
+        <Footer />
       </section>
     </div>
   );
