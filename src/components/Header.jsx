@@ -13,8 +13,10 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({ type }) => {
+  const [destination, setDestination] = useState('');
   const [openDate, setOpenDate] = useState(false);
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
@@ -30,6 +32,8 @@ const Header = ({ type }) => {
     },
   ]);
 
+  const navigate = useNavigate();
+
   const toggleCalendar = () => {
     setOpenDate(!openDate);
   };
@@ -44,6 +48,16 @@ const Header = ({ type }) => {
         ...prev,
         [name]: operation === 'i' ? options[name] + 1 : options[name] - 1,
       };
+    });
+  };
+
+  const handleSearch = () => {
+    navigate('/hotels', {
+      state: {
+        destination,
+        date,
+        options,
+      },
     });
   };
 
@@ -93,6 +107,7 @@ const Header = ({ type }) => {
                   type='text'
                   placeholder='Where are you going?'
                   className='outline-none placeholder:text-black flex-1 h-full'
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
               <div className='flex relative items-center gap-2.5 cursor-pointer border-x-4 border-yellow px-6 z-30'>
@@ -100,12 +115,10 @@ const Header = ({ type }) => {
                   icon={faCalendarDays}
                   className='text-gray-400'
                 />
-                <span
-                  onClick={toggleCalendar}
-                >{`${format(date[0].startDate, 'E, MMM d')} - ${format(
-                  date[0].endDate,
+                <span onClick={toggleCalendar}>{`${format(
+                  date[0].startDate,
                   'E, MMM d'
-                )}`}</span>
+                )} - ${format(date[0].endDate, 'E, MMM d')}`}</span>
                 {openDate && (
                   <span>
                     <DateRange
@@ -193,7 +206,9 @@ const Header = ({ type }) => {
                 )}
               </div>
               <div>
-                <button className='btn-secondary py-3.5'>Search</button>
+                <button className='btn-secondary py-3.5' onClick={handleSearch}>
+                  Search
+                </button>
               </div>
             </div>
           </>

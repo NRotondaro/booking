@@ -12,7 +12,7 @@
   }
 
   .btn-operator {
-    @apply w-8 h-8 border-[1px] border-activeBlue text-activeBlue cursor-pointer bg-white disabled:border-gray-400 disabled:text-gray-400 disabled:cursor-not-allowed active:border-2;
+    @apply w-8 h-8 border-[1px] border-activeBlue text-activeBlue cursor-pointer bg-white disabled:border-gray disabled:text-gray disabled:cursor-not-allowed active:border-2;
   }
 
   .li-primary {
@@ -24,6 +24,6 @@
   }
 
   .li-footer {
-    @apply mb-2.5 text-primary cursor-pointer
+    @apply mb-2.5 text-primary cursor-pointer;
   }
 }
