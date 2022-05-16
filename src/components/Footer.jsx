@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className='w-full max-w-6xl text-sm'>
+    <div className='w-full max-w-6xl text-sm mt-10 mb-2'>
       <div className='w-full flex justify-between mb-12'>
         <ul>
           <li className='li-footer'>Countries</li>
