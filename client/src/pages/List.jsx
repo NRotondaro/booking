@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { format } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import SearchItem from '../components/SearchItem';
+import useFetch from '../hooks/useFetch';
 
 const List = () => {
   const location = useLocation();
@@ -12,6 +13,16 @@ const List = () => {
   const [date, setDate] = useState(location.state.date);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
+
+  const { data, loading, error, reFetch } = useFetch(
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+  );
+
+  const handleClick = () => {
+    reFetch();
+  };
 
   return (
     <div>
@@ -57,13 +68,21 @@ const List = () => {
                   <span>
                     Min price <small>per night</small>
                   </span>
-                  <input type='number' className='w-8' />
+                  <input
+                    type='number'
+                    onChange={(e) => setMin(e.target.value)}
+                    className='w-8'
+                  />
                 </div>
                 <div className='flex justify-between mb-2.5 text-gray text-xs'>
                   <span>
                     Max price <small>per night</small>
                   </span>
-                  <input type='number' className='w-8' />
+                  <input
+                    type='number'
+                    onChange={(e) => setMax(e.target.value)}
+                    className='w-8'
+                  />
                 </div>
                 <div className='flex justify-between mb-2.5 text-gray text-xs'>
                   <span>Adult</span>
@@ -94,19 +113,23 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button className='p-2.5 bg-activeBlue text-white border-none w-full font-semibold cursor-pointer hover:bg-primary'>
+            <button
+              onClick={handleClick}
+              className='p-2.5 bg-activeBlue text-white border-none w-full font-semibold cursor-pointer hover:bg-primary'
+            >
               Search
             </button>
           </div>
           <div className='basis-3/4'>
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+            {loading ? (
+              'Loading please wait!'
+            ) : (
+              <>
+                {data.map((item) => (
+                  <SearchItem item={item} key={item._id} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>

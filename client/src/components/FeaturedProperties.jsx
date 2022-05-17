@@ -1,70 +1,34 @@
+import useFetch from '../hooks/useFetch';
+
 const FeaturedProperties = () => {
+  const { data, loading, error } = useFetch('/hotels?featured=true&limit=4');
+
   return (
     <div className='w-full max-w-6xl flex justify-between gap-5'>
-      <div className='flex flex-col flex-1 gap-2.5'>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/4/44/Plaza_Mayor_de_Madrid_06.jpg'
-          alt=''
-          className='w-full'
-        />
-        <span className='font-bold'>Aparthotel Stare Miasto</span>
-        <span className='font-light'>Madrid</span>
-        <span className='font-semibold'>Starting from $120</span>
-        <div>
-          <button className='bg-primary text-white border-none px-1 py-[2px] mr-2.5 font-bold'>
-            8.9
-          </button>
-          <span className='text-sm'>Excellent</span>
-        </div>
-      </div>
-      <div className='flex flex-col flex-1 gap-2.5'>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/4/44/Plaza_Mayor_de_Madrid_06.jpg'
-          alt=''
-          className='w-full'
-        />
-        <span className='font-bold'>Aparthotel Stare Miasto</span>
-        <span className='font-light'>Madrid</span>
-        <span className='font-semibold'>Starting from $120</span>
-        <div>
-          <button className='bg-primary text-white border-none p-1 mr-2.5 font-bold'>
-            8.9
-          </button>
-          <span className='text-sm'>Excellent</span>
-        </div>
-      </div>
-      <div className='flex flex-col flex-1 gap-2.5'>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/4/44/Plaza_Mayor_de_Madrid_06.jpg'
-          alt=''
-          className='w-full'
-        />
-        <span className='font-bold'>Aparthotel Stare Miasto</span>
-        <span className='font-light'>Madrid</span>
-        <span className='font-semibold'>Starting from $120</span>
-        <div>
-          <button className='bg-primary text-white border-none p-1 mr-2.5 font-bold'>
-            8.9
-          </button>
-          <span className='text-sm'>Excellent</span>
-        </div>
-      </div>
-      <div className='flex flex-col flex-1 gap-2.5'>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/4/44/Plaza_Mayor_de_Madrid_06.jpg'
-          alt=''
-          className='w-full'
-        />
-        <span className='font-bold'>Aparthotel Stare Miasto</span>
-        <span className='font-light'>Madrid</span>
-        <span className='font-semibold'>Starting from $120</span>
-        <div>
-          <button className='bg-primary text-white border-none p-1 mr-2.5 font-bold'>
-            8.9
-          </button>
-          <span className='text-sm'>Excellent</span>
-        </div>
-      </div>
+      {loading ? (
+        'Loading please wait!'
+      ) : (
+        <>
+          {data.map((item) => (
+            <div className='flex flex-col flex-1 gap-2.5' key={item._id}>
+              <img src={item.photos[0]} alt='featured-property' className='w-full' />
+              <span className='font-bold'>{item.name}</span>
+              <span className='font-light'>{item.city}</span>
+              <span className='font-semibold'>
+                Starting from ${item.cheapestPrice}
+              </span>
+              {item.rating && (
+                <div>
+                  <button className='bg-primary text-white border-none px-1 py-[2px] mr-2.5 font-bold'>
+                    {item.rating}
+                  </button>
+                  <span className='text-sm'>Excellent</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };
