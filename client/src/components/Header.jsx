@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBed,
@@ -14,6 +14,8 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { SearchContext } from '../context/SearchContext';
+import { AuthContext } from '../context/AuthContext';
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState('');
@@ -24,13 +26,14 @@ const Header = ({ type }) => {
     children: 0,
     room: 1,
   });
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
       key: 'selection',
     },
   ]);
+  const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -51,11 +54,14 @@ const Header = ({ type }) => {
     });
   };
 
+  const { dispatch } = useContext(SearchContext);
+
   const handleSearch = () => {
+    dispatch({ type: 'NEW_SEARCH', payload: { destination, dates, options } });
     navigate('/hotels', {
       state: {
         destination,
-        date,
+        dates,
         options,
       },
     });
@@ -99,7 +105,9 @@ const Header = ({ type }) => {
               Get rewarded for your travels – unlock instant savings of 10% or
               more with a free Booking.com account
             </p>
-            <button className='btn-secondary'>Sign in / Register</button>
+            {!user && (
+              <button className='btn-secondary'>Sign in / Register</button>
+            )}
             <div className='h-16 w-full max-w-6xl border-4 border-yellow bg-white flex justify-between rounded-sm absolute -bottom-28 text-black shadow-xl'>
               <div className='flex flex-1 items-center ml-1 pl-3 gap-2.5'>
                 <FontAwesomeIcon icon={faBed} className='text-gray-400' />
@@ -116,17 +124,17 @@ const Header = ({ type }) => {
                   className='text-gray-400'
                 />
                 <span onClick={toggleCalendar}>{`${format(
-                  date[0].startDate,
+                  dates[0].startDate,
                   'E, MMM d'
-                )} - ${format(date[0].endDate, 'E, MMM d')}`}</span>
+                )} - ${format(dates[0].endDate, 'E, MMM d')}`}</span>
                 {openDate && (
                   <span>
                     <DateRange
                       className='absolute top-16 left-0 shadow-md'
                       editableDateInputs={true}
-                      onChange={(item) => setDate([item.selection])}
+                      onChange={(item) => setDates([item.selection])}
                       moveRangeOnFirstSelection={false}
-                      ranges={date}
+                      ranges={dates}
                       minDate={new Date()}
                     />
                   </span>

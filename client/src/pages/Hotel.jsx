@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +12,7 @@ import Mail from '../components/Mail';
 import Footer from '../components/Footer';
 import useFetch from '../hooks/useFetch';
 import { useLocation } from 'react-router-dom';
+import { SearchContext } from '../context/SearchContext';
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
@@ -20,6 +21,17 @@ const Hotel = () => {
   const id = location.pathname.split('/')[2];
 
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+
+  const { dates, options } = useContext(SearchContext);
+
+  const MILISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / MILISECONDS_PER_DAY);
+    return diffDays;
+  }
+
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -107,14 +119,15 @@ const Hotel = () => {
               </div>
               <div className='basis-1/4 bg-lightBlue flex flex-col gap-5 p-5'>
                 <h2 className='text-lg text-gray font-bold'>
-                  Perfect for a 9-night stay!
+                  Perfect for a {days}-night stay!
                 </h2>
                 <span className='text-sm'>
                   Located in the real heart of Krakow, excellent location score
                   of 9.8!
                 </span>
                 <h3 className='font-bold'>
-                  $945 <span className='font-light'>(9 nights)</span>
+                  ${days * data.cheapestPrice * options.room}{' '}
+                  <span className='font-light'>({days} nights)</span>
                 </h3>
                 <button className='border-none py-2.5 px-5 bg-activeBlue hover:bg-primary text-white rounded-md font-bold cursor-pointer'>
                   Reserve or Book Now!

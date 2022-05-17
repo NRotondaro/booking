@@ -10,7 +10,7 @@ import useFetch from '../hooks/useFetch';
 const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
-  const [date, setDate] = useState(location.state.date);
+  const [dates, setDates] = useState(location.state.dates);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
@@ -47,16 +47,16 @@ const List = () => {
               <span
                 className='h-8 p-1 bg-white flex items-center cursor-pointer'
                 onClick={() => setOpenDate(!openDate)}
-              >{`${format(date[0].startDate, 'E, MMM d')} - ${format(
-                date[0].endDate,
+              >{`${format(dates[0].startDate, 'E, MMM d')} - ${format(
+                dates[0].endDate,
                 'E, MMM d'
               )}`}</span>
               {openDate && (
                 <DateRange
                   editableDateInputs={true}
-                  onChange={(item) => setDate([item.selection])}
+                  onChange={(item) => setDates([item.selection])}
                   moveRangeOnFirstSelection={false}
-                  ranges={date}
+                  ranges={dates}
                   minDate={new Date()}
                 />
               )}
