@@ -13,9 +13,9 @@ const Featured = () => {
         <>
           <div className='li-featured'>
             <img
-              src='https://cf.bstatic.com/xdata/images/city/square250/349399.webp?k=6f023ae905561a547be6cc5cb117571b4a1425b633e767cdbbf797bb5225dd18&o='
+              src='https://a.cdn-hotels.com/gdcs/production174/d1765/453dc120-19d4-4881-93ee-69b07087ecb7.jpg'
               className='w-full object-cover'
-              alt=''
+              alt='gramado'
             />
             <div className='absolute bottom-5 left-3'>
               <h2 className='text-2xl font-bold'>Gramado</h2>

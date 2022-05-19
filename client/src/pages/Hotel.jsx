@@ -11,16 +11,22 @@ import {
 import Mail from '../components/Mail';
 import Footer from '../components/Footer';
 import useFetch from '../hooks/useFetch';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../context/SearchContext';
+import { AuthContext } from '../context/AuthContext';
+import Reserve from '../components/Reserve';
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+
   const location = useLocation();
   const id = location.pathname.split('/')[2];
 
-  const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  const { data, loading } = useFetch(`/hotels/find/${id}`);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
 
@@ -48,6 +54,14 @@ const Hotel = () => {
     }
 
     setSlideNumber(newSlideNumber);
+  };
+
+  const handleClick = () => {
+    if (user) {
+      setOpenModal(true)
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -129,7 +143,10 @@ const Hotel = () => {
                   ${days * data.cheapestPrice * options.room}{' '}
                   <span className='font-light'>({days} nights)</span>
                 </h3>
-                <button className='border-none py-2.5 px-5 bg-activeBlue hover:bg-primary text-white rounded-md font-bold cursor-pointer'>
+                <button
+                  onClick={handleClick}
+                  className='border-none py-2.5 px-5 bg-activeBlue hover:bg-primary text-white rounded-md font-bold cursor-pointer'
+                >
                   Reserve or Book Now!
                 </button>
               </div>
@@ -138,6 +155,9 @@ const Hotel = () => {
           <Mail />
           <Footer />
         </div>
+      )}
+      {openModal && (
+        <Reserve setOpen={setOpenModal} hotelId={id} />
       )}
     </div>
   );

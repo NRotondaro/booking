@@ -20,7 +20,7 @@
   }
 
   .li-featured {
-    @apply relative text-white rounded-md overflow-hidden h-64;
+    @apply w-full relative text-white rounded-md overflow-hidden h-52;
   }
 
   .li-footer {
