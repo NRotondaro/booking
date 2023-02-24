@@ -18,19 +18,10 @@ const PropertyList = () => {
         <>
           {data &&
             images.map((img, i) => (
-              <div
-                className='rounded-md overflow-hidden cursor-pointer flex-1'
-                key={i}
-              >
-                <img
-                  src={img}
-                  className='w-full h-40 object-cover'
-                  alt='property'
-                />
+              <div className='rounded-md overflow-hidden cursor-pointer flex-1' key={i}>
+                <img src={img} className='w-full h-40 object-cover' alt='property' />
                 <div>
-                  <h1 className='text-lg font-bold capitalize'>
-                    {data[i]?.type}
-                  </h1>
+                  <h1 className='text-lg font-bold capitalize'>{data[i]?.type}</h1>
                   <h1 className='text-sm font-light'>
                     {data[i]?.count} {data[i]?.type}
                   </h1>

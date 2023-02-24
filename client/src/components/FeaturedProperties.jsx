@@ -14,9 +14,7 @@ const FeaturedProperties = () => {
               <img src={item.photos[0]} alt='featured-property' className='w-full' />
               <span className='font-bold'>{item.name}</span>
               <span className='font-light'>{item.city}</span>
-              <span className='font-semibold'>
-                Starting from ${item.cheapestPrice}
-              </span>
+              <span className='font-semibold'>Starting from ${item.cheapestPrice}</span>
               {item.rating && (
                 <div>
                   <button className='bg-primary text-white border-none px-1 py-[2px] mr-2.5 font-bold'>

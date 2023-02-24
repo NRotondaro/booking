@@ -58,7 +58,7 @@ const Hotel = () => {
 
   const handleClick = () => {
     if (user) {
-      setOpenModal(true)
+      setOpenModal(true);
     } else {
       navigate('/login');
     }
@@ -85,11 +85,7 @@ const Hotel = () => {
                 onClick={() => handleMove('l')}
               />
               <div className='w-full h-full justify-center items-center flex'>
-                <img
-                  className='w-4/5 h-5/6'
-                  src={data?.photos[slideNumber]}
-                  alt=''
-                />
+                <img className='w-4/5 h-5/6' src={data?.photos[slideNumber]} alt='' />
               </div>
               <FontAwesomeIcon
                 icon={faCircleArrowRight}
@@ -111,8 +107,7 @@ const Hotel = () => {
               Excellent location - {data?.distance}m from center
             </span>
             <span className='text-green font-semibold'>
-              Book a stay over ${data?.cheapestPrice} at this property and get a
-              free airport taxi
+              Book a stay over ${data?.cheapestPrice} at this property and get a free airport taxi
             </span>
             <div className='flex flex-wrap justify-between'>
               {data?.photos?.map((photo, i) => (
@@ -132,12 +127,9 @@ const Hotel = () => {
                 <p className='text-sm mt-5'>{data?.desc}</p>
               </div>
               <div className='basis-1/4 bg-lightBlue flex flex-col gap-5 p-5'>
-                <h2 className='text-lg text-gray font-bold'>
-                  Perfect for a {days}-night stay!
-                </h2>
+                <h2 className='text-lg text-gray font-bold'>Perfect for a {days}-night stay!</h2>
                 <span className='text-sm'>
-                  Located in the real heart of Krakow, excellent location score
-                  of 9.8!
+                  Located in the real heart of Krakow, excellent location score of 9.8!
                 </span>
                 <h3 className='font-bold'>
                   ${days * data.cheapestPrice * options.room}{' '}
@@ -145,8 +137,7 @@ const Hotel = () => {
                 </h3>
                 <button
                   onClick={handleClick}
-                  className='border-none py-2.5 px-5 bg-activeBlue hover:bg-primary text-white rounded-md font-bold cursor-pointer'
-                >
+                  className='border-none py-2.5 px-5 bg-activeBlue hover:bg-primary text-white rounded-md font-bold cursor-pointer'>
                   Reserve or Book Now!
                 </button>
               </div>
@@ -156,9 +147,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
-      {openModal && (
-        <Reserve setOpen={setOpenModal} hotelId={id} />
-      )}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };

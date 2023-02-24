@@ -4,20 +4,14 @@ import { Link } from 'react-router-dom';
 const SearchItem = ({ item }) => {
   return (
     <div className='border-[1px] border-zinc-400 p-3 rounded-sm flex justify-between gap-5 mb-5'>
-      <img
-        src={item.photos[0]}
-        alt='residence-img'
-        className='w-52 h-52 object-cover rounded-sm'
-      />
+      <img src={item.photos[0]} alt='residence-img' className='w-52 h-52 object-cover rounded-sm' />
       <div className='flex flex-col gap-2.5 basis-2/3'>
         <h1 className='text-xl text-activeBlue font-bold'>{item.name}</h1>
         <span className='text-xs'>{item.distance}m from center</span>
         <span className='text-xs bg-green text-white max-w-max p-1 rounded-md'>
           Free airport taxi
         </span>
-        <span className='text-xs font-bold'>
-          Studio Apartment with Air conditioning
-        </span>
+        <span className='text-xs font-bold'>Studio Apartment with Air conditioning</span>
         <span className='text-xs'>{item.desc}</span>
         <span className='text-green text-xs font-bold'>Free cancellation</span>
         <span className='text-green text-xs'>

@@ -17,7 +17,7 @@ const List = () => {
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`,
   );
 
   const handleClick = () => {
@@ -36,21 +36,16 @@ const List = () => {
               <label className='text-sm' htmlFor=''>
                 Destination
               </label>
-              <input
-                className='h-8 border-none p-1'
-                placeholder={destination}
-                type='text'
-              />
+              <input className='h-8 border-none p-1' placeholder={destination} type='text' />
             </div>
             <div className='flex flex-col gap-1 mb-2.5'>
               <label className='text-sm'>Check-in Date</label>
               <span
                 className='h-8 p-1 bg-white flex items-center cursor-pointer'
-                onClick={() => setOpenDate(!openDate)}
-              >{`${format(dates[0].startDate, 'E, MMM d')} - ${format(
-                dates[0].endDate,
-                'E, MMM d'
-              )}`}</span>
+                onClick={() => setOpenDate(!openDate)}>{`${format(
+                dates[0].startDate,
+                'E, MMM d',
+              )} - ${format(dates[0].endDate, 'E, MMM d')}`}</span>
               {openDate && (
                 <DateRange
                   editableDateInputs={true}
@@ -68,55 +63,31 @@ const List = () => {
                   <span>
                     Min price <small>per night</small>
                   </span>
-                  <input
-                    type='number'
-                    onChange={(e) => setMin(e.target.value)}
-                    className='w-8'
-                  />
+                  <input type='number' onChange={(e) => setMin(e.target.value)} className='w-8' />
                 </div>
                 <div className='flex justify-between mb-2.5 text-gray text-xs'>
                   <span>
                     Max price <small>per night</small>
                   </span>
-                  <input
-                    type='number'
-                    onChange={(e) => setMax(e.target.value)}
-                    className='w-8'
-                  />
+                  <input type='number' onChange={(e) => setMax(e.target.value)} className='w-8' />
                 </div>
                 <div className='flex justify-between mb-2.5 text-gray text-xs'>
                   <span>Adult</span>
-                  <input
-                    type='number'
-                    min={1}
-                    placeholder={options.adult}
-                    className='w-8'
-                  />
+                  <input type='number' min={1} placeholder={options.adult} className='w-8' />
                 </div>
                 <div className='flex justify-between mb-2.5 text-gray text-xs'>
                   <span>Children</span>
-                  <input
-                    type='number'
-                    min={0}
-                    placeholder={options.children}
-                    className='w-8'
-                  />
+                  <input type='number' min={0} placeholder={options.children} className='w-8' />
                 </div>
                 <div className='flex justify-between mb-2.5 text-gray text-xs'>
                   <span>Room</span>
-                  <input
-                    type='number'
-                    min={1}
-                    placeholder={options.room}
-                    className='w-8'
-                  />
+                  <input type='number' min={1} placeholder={options.room} className='w-8' />
                 </div>
               </div>
             </div>
             <button
               onClick={handleClick}
-              className='p-2.5 bg-activeBlue text-white border-none w-full font-semibold cursor-pointer hover:bg-primary'
-            >
+              className='p-2.5 bg-activeBlue text-white border-none w-full font-semibold cursor-pointer hover:bg-primary'>
               Search
             </button>
           </div>

@@ -69,11 +69,7 @@ const Header = ({ type }) => {
 
   return (
     <header className='bg-primary text-white flex justify-center'>
-      <div
-        className={`w-full max-w-6xl ${
-          type === 'list' ? 'mb-0' : 'mb-20'
-        } relative`}
-      >
+      <div className={`w-full max-w-6xl ${type === 'list' ? 'mb-0' : 'mb-20'} relative`}>
         <div className='flex gap-4 mb-10'>
           <div className='li-primary'>
             <FontAwesomeIcon icon={faBed} />
@@ -98,16 +94,12 @@ const Header = ({ type }) => {
         </div>
         {type !== 'list' && (
           <>
-            <h1 className='text-5xl font-bold'>
-              A lifetime of discounts? It's Genius.
-            </h1>
+            <h1 className='text-5xl font-bold'>A lifetime of discounts? It's Genius.</h1>
             <p className='my-8 text-2xl max-w-4xl'>
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Booking.com account
+              Get rewarded for your travels – unlock instant savings of 10% or more with a free
+              Booking.com account
             </p>
-            {!user && (
-              <button className='btn-secondary'>Sign in / Register</button>
-            )}
+            {!user && <button className='btn-secondary'>Sign in / Register</button>}
             <div className='h-16 w-full max-w-6xl border-4 border-yellow bg-white flex justify-between rounded-sm absolute -bottom-28 text-black shadow-xl'>
               <div className='flex flex-1 items-center ml-1 pl-3 gap-2.5'>
                 <FontAwesomeIcon icon={faBed} className='text-gray-400' />
@@ -119,13 +111,10 @@ const Header = ({ type }) => {
                 />
               </div>
               <div className='flex relative items-center gap-2.5 cursor-pointer border-x-4 border-yellow px-6 z-30'>
-                <FontAwesomeIcon
-                  icon={faCalendarDays}
-                  className='text-gray-400'
-                />
+                <FontAwesomeIcon icon={faCalendarDays} className='text-gray-400' />
                 <span onClick={toggleCalendar}>{`${format(
                   dates[0].startDate,
-                  'E, MMM d'
+                  'E, MMM d',
                 )} - ${format(dates[0].endDate, 'E, MMM d')}`}</span>
                 {openDate && (
                   <span>
@@ -143,8 +132,9 @@ const Header = ({ type }) => {
               <div className='flex items-center gap-3 cursor-pointer border-r-4 border-yellow px-6 relative'>
                 <FontAwesomeIcon icon={faUser} className='text-gray-400' />
                 <span
-                  onClick={toggleOptions}
-                >{`${options.adult} adults · ${options.children} children · ${options.room} room`}</span>
+                  onClick={
+                    toggleOptions
+                  }>{`${options.adult} adults · ${options.children} children · ${options.room} room`}</span>
                 {openOptions && (
                   <div className='absolute top-16 right-0 px-2 py-4 bg-white rounded-md shadow-md z-30'>
                     <div className='w-48 flex items-center justify-between m-2.5'>
@@ -153,17 +143,11 @@ const Header = ({ type }) => {
                         <button
                           disabled={options.adult <= 1}
                           className='btn-operator'
-                          onClick={() => handleOption('adult', 'd')}
-                        >
+                          onClick={() => handleOption('adult', 'd')}>
                           -
                         </button>
-                        <span className='option counter number'>
-                          {options.adult}
-                        </span>
-                        <button
-                          className='btn-operator'
-                          onClick={() => handleOption('adult', 'i')}
-                        >
+                        <span className='option counter number'>{options.adult}</span>
+                        <button className='btn-operator' onClick={() => handleOption('adult', 'i')}>
                           +
                         </button>
                       </div>
@@ -174,17 +158,13 @@ const Header = ({ type }) => {
                         <button
                           disabled={options.children <= 0}
                           className='btn-operator'
-                          onClick={() => handleOption('children', 'd')}
-                        >
+                          onClick={() => handleOption('children', 'd')}>
                           -
                         </button>
-                        <span className='option counter number'>
-                          {options.children}
-                        </span>
+                        <span className='option counter number'>{options.children}</span>
                         <button
                           className='btn-operator'
-                          onClick={() => handleOption('children', 'i')}
-                        >
+                          onClick={() => handleOption('children', 'i')}>
                           +
                         </button>
                       </div>
@@ -195,17 +175,11 @@ const Header = ({ type }) => {
                         <button
                           disabled={options.room <= 1}
                           className='btn-operator'
-                          onClick={() => handleOption('room', 'd')}
-                        >
+                          onClick={() => handleOption('room', 'd')}>
                           -
                         </button>
-                        <span className='option counter number'>
-                          {options.room}
-                        </span>
-                        <button
-                          className='btn-operator'
-                          onClick={() => handleOption('room', 'i')}
-                        >
+                        <span className='option counter number'>{options.room}</span>
+                        <button className='btn-operator' onClick={() => handleOption('room', 'i')}>
                           +
                         </button>
                       </div>

@@ -53,8 +53,7 @@ export const AuthContextProvider = ({ children }) => {
         loading: state.loading,
         error: state.error,
         dispatch,
-      }}
-    >
+      }}>
       {children}
     </AuthContext.Provider>
   );

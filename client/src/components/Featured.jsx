@@ -1,9 +1,7 @@
 import useFetch from '../hooks/useFetch';
 
 const Featured = () => {
-  const { data, loading, error } = useFetch(
-    '/hotels/countByCity?cities=berlin,madrid,london'
-  );
+  const { data, loading, error } = useFetch('/hotels/countByCity?cities=berlin,madrid,london');
 
   return (
     <div className='w-full max-w-6xl flex justify-between gap-5 z-10'>

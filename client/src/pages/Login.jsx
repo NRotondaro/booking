@@ -49,8 +49,7 @@ const Login = () => {
         <button
           disabled={loading}
           onClick={handleClick}
-          className='border-none py-2.5 px-5 bg-activeBlue hover:bg-primary text-white font-bold cursor-pointer rounded-md disabled:bg-gray disabled:cursor-not-allowed'
-        >
+          className='border-none py-2.5 px-5 bg-activeBlue hover:bg-primary text-white font-bold cursor-pointer rounded-md disabled:bg-gray disabled:cursor-not-allowed'>
           Login
         </button>
         {error && <span>{error.message}</span>}

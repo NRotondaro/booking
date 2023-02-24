@@ -31,7 +31,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
-      alldates.includes(new Date(date).getTime())
+      alldates.includes(new Date(date).getTime()),
     );
 
     return !isFound;
@@ -41,9 +41,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     const checked = e.target.checked;
     const value = e.target.value;
     setSelectedRooms(
-      checked
-        ? [...selectedRooms, value]
-        : selectedRooms.filter((item) => item !== value)
+      checked ? [...selectedRooms, value] : selectedRooms.filter((item) => item !== value),
     );
   };
 
@@ -57,7 +55,7 @@ const Reserve = ({ setOpen, hotelId }) => {
             dates: alldates,
           });
           return res.data;
-        })
+        }),
       );
       setOpen(false);
       navigate('/');
@@ -102,8 +100,7 @@ const Reserve = ({ setOpen, hotelId }) => {
         ))}
         <button
           onClick={handleClick}
-          className='py-2.5 px-5 bg-activeBlue text-white font-bold cursor-pointer rounded-md w-full mt-5'
-        >
+          className='py-2.5 px-5 bg-activeBlue text-white font-bold cursor-pointer rounded-md w-full mt-5'>
           Reserve Now!
         </button>
       </div>
