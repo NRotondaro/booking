@@ -19,14 +19,14 @@ const connect = async () => {
   }
 };
 
-/* mongoose.connection.on('disconnected', () => {
-  console.log('mongodb disconnected');
+// The 23-29 lines are just making sure that mongoDB is connected or disconnected
+mongoose.connection.on('disconnected', () => {
+  console.log('mongoDB is disconnected!');
 });
 
 mongoose.connection.on('connected', () => {
-  console.log('mongodb connected');
+  console.log('mongoDB is connected!');
 });
- */
 
 //middlewares
 app.use(cookieParser());
