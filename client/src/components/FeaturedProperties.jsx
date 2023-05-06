@@ -5,6 +5,7 @@ const FeaturedProperties = () => {
 
   return (
     <div className='w-full max-w-6xl flex justify-between gap-5'>
+      {error && 'Something went wrong, please try again later.'}
       {loading ? (
         'Loading please wait!'
       ) : (

@@ -1,10 +1,11 @@
 import useFetch from '../hooks/useFetch';
 
 const Featured = () => {
-  const { data, loading, error } = useFetch('/hotels/countByCity?cities=berlin,madrid,london');
+  const { data, loading, error } = useFetch('/hotels/countByCity?cities=maceio,recife,natal');
 
   return (
     <div className='w-full max-w-6xl flex justify-between gap-5 z-10'>
+      {error && 'Something went wrong, please try again later.'}
       {loading ? (
         'Loading please wait'
       ) : (
@@ -16,7 +17,7 @@ const Featured = () => {
               alt='gramado'
             />
             <div className='absolute bottom-5 left-3'>
-              <h2 className='text-2xl font-bold'>Gramado</h2>
+              <h2 className='text-2xl font-bold'>Maceió</h2>
               <h2 className='text-2xl font-bold'>{data[0]} properties</h2>
             </div>
           </div>
@@ -27,7 +28,7 @@ const Featured = () => {
               alt=''
             />
             <div className='absolute bottom-5 left-3'>
-              <h2 className='text-2xl font-bold'>Rio de Janeiro</h2>
+              <h2 className='text-2xl font-bold'>Recife</h2>
               <h2 className='text-2xl font-bold'>{data[1]} properties</h2>
             </div>
           </div>
@@ -38,7 +39,7 @@ const Featured = () => {
               alt=''
             />
             <div className='absolute bottom-5 left-3'>
-              <h2 className='text-2xl font-bold'>São Paulo</h2>
+              <h2 className='text-2xl font-bold'>Natal</h2>
               <h2 className='text-2xl font-bold'>{data[2]} properties</h2>
             </div>
           </div>
