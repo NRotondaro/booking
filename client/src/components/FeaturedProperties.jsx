@@ -1,18 +1,22 @@
 import useFetch from '../hooks/useFetch';
+import Spinner from './Spinner';
 
 const FeaturedProperties = () => {
-  const { data, loading, error } = useFetch('/hotels?featured=true&limit=4');
+  const { data, loading, error } = useFetch('/hotels?featured=true&limit=2&min=1&max=200');
 
+  console.log(data);
   return (
     <div className='w-full max-w-6xl flex justify-between gap-5'>
       {error && 'Something went wrong, please try again later.'}
       {loading ? (
-        'Loading please wait!'
+        <Spinner />
       ) : (
         <>
           {data.map((item) => (
             <div className='flex flex-col flex-1 gap-2.5' key={item._id}>
-              <img src={item.photos[0]} alt='featured-property' className='w-full' />
+              {item.photos && (
+                <img src={item.photos[0]} alt='featured-property' className='w-full' />
+              )}
               <span className='font-bold'>{item.name}</span>
               <span className='font-light'>{item.city}</span>
               <span className='font-semibold'>Starting from ${item.cheapestPrice}</span>

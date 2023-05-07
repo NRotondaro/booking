@@ -26,6 +26,7 @@ const PropertyList = () => {
                   <h1 className='text-lg font-bold capitalize'>{data[i]?.type}</h1>
                   <h1 className='text-sm font-light'>
                     {data[i]?.count} {data[i]?.type}
+                    {data[i]?.count > 1 && 's'}
                   </h1>
                 </div>
               </div>

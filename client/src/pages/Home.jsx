@@ -16,7 +16,7 @@ const Home = () => {
         <h1 className='text-xl font-bold'>Browse by property type</h1>
         <PropertyList />
         <h1 className='text-xl font-bold'>Homes guests love</h1>
-        {/* <FeaturedProperties /> */}
+        <FeaturedProperties />
         <Mail />
         <Footer />
       </section>
