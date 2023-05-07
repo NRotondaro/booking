@@ -11,15 +11,15 @@ const Home = () => {
     <div>
       <Navbar />
       <Header />
-      <section className='mt-12 flex flex-col items-center gap-8'>
+      <section className='mx-auto max-w-5xl lg:max-w-6xl mt-12 flex flex-col items-center gap-8'>
         <Featured />
         <h1 className='text-xl font-bold'>Browse by property type</h1>
         <PropertyList />
         <h1 className='text-xl font-bold'>Homes guests love</h1>
         <FeaturedProperties />
-        <Mail />
-        <Footer />
       </section>
+      <Mail />
+      <Footer />
     </div>
   );
 };

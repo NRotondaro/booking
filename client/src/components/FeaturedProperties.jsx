@@ -6,7 +6,7 @@ const FeaturedProperties = () => {
 
   console.log(data);
   return (
-    <div className='w-full max-w-6xl flex justify-between gap-5'>
+    <div className='flex gap-5 self-start'>
       {error && 'Something went wrong, please try again later.'}
       {loading ? (
         <Spinner />

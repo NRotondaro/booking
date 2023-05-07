@@ -12,11 +12,11 @@
   }
 
   .btn-operator {
-    @apply w-8 h-8 border-[1px] border-activeBlue text-activeBlue cursor-pointer bg-white disabled:border-gray disabled:text-gray disabled:cursor-not-allowed active:border-2;
+    @apply w-8 h-8 border border-activeBlue text-activeBlue cursor-pointer bg-white disabled:border-gray disabled:text-gray disabled:cursor-not-allowed active:border-2;
   }
 
   .li-primary {
-    @apply py-2.5 px-3 flex items-center gap-2.5 border-[1px] border-transparent rounded-3xl active:border-white hover:bg-secondary hover:cursor-pointer;
+    @apply py-2.5 px-3 flex items-center gap-2.5 border border-transparent rounded-3xl active:border-white hover:bg-secondary hover:cursor-pointer;
   }
 
   .li-featured {
