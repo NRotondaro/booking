@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import SearchItem from '../components/SearchItem';
 import useFetch from '../hooks/useFetch';
+import Spinner from '../components/Spinner';
 
 const List = () => {
   const location = useLocation();
@@ -93,7 +94,7 @@ const List = () => {
           </div>
           <div className='basis-3/4'>
             {loading ? (
-              'Loading please wait!'
+              <Spinner />
             ) : (
               <>
                 {data.map((item) => (

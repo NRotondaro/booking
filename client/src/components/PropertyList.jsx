@@ -1,4 +1,5 @@
 import useFetch from '../hooks/useFetch';
+import Spinner from './Spinner';
 
 const PropertyList = () => {
   const { data, loading, error } = useFetch('/hotels/countByType');
@@ -12,8 +13,9 @@ const PropertyList = () => {
   ];
   return (
     <div className='flex w-full max-w-6xl justify-between gap-5'>
+      {error && 'Something went wrong, please try again later.'}
       {loading ? (
-        'Loading please wait'
+        <Spinner />
       ) : (
         <>
           {data &&

@@ -1,4 +1,5 @@
 import useFetch from '../hooks/useFetch';
+import Spinner from './Spinner';
 
 const Featured = () => {
   const { data, loading, error } = useFetch('/hotels/countByCity?cities=maceio,recife,natal');
@@ -7,7 +8,7 @@ const Featured = () => {
     <div className='w-full max-w-6xl flex justify-between gap-5 z-10'>
       {error && 'Something went wrong, please try again later.'}
       {loading ? (
-        'Loading please wait'
+        <Spinner />
       ) : (
         <>
           <div className='li-featured'>

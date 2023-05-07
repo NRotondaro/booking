@@ -15,6 +15,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../context/SearchContext';
 import { AuthContext } from '../context/AuthContext';
 import Reserve from '../components/Reserve';
+import Spinner from '../components/Spinner';
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
@@ -69,7 +70,7 @@ const Hotel = () => {
       <Navbar />
       <Header type='list' />
       {loading ? (
-        'Loading please wait!'
+        <Spinner />
       ) : (
         <div className='flex items-center flex-col mt-2.5'>
           {open && (
